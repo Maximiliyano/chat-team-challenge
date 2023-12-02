@@ -1,0 +1,26 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: |
+    # Install Heroku CLI using npm
+    npm install -g heroku
+  displayName: 'Install Heroku CLI'
+
+- script: |
+    heroku authorizations:create --description "CI/CD Pipeline" --scope write
+    # Set the Heroku API key as the default API key
+    heroku authorizations:default $HEROKU_API_KEY
+  displayName: 'Heroku Login'
+
+- script: |
+    echo CONTAINER LOGIN
+    heroku container:login
+    echo PUSH
+    heroku container:push -a $HEROKU_APP_NAME web
+    echo RELEASE
+    heroku container:release -a $HEROKU_APP_NAME web
+  displayName: 'Heroku Push'

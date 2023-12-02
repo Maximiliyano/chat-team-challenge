@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ac4c0f1c-97e1-4f88-813b-95b7dd2b6e74" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Behaviours/ValidationBehaviour.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Exceptions/ValidationException.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Validators/Authorization/LoginValidator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Validators/Message/MessageCreationValidator.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatTeamChallenge.BLL/Contracts/ApiErrorResponse.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatTeamChallenge.BLL/Infrastructure/ApiController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatTeamChallenge.BLL/Infrastructure/ConnectionString.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatTeamChallenge.Common/Dto/Message/CreationMessageDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/Core/ValidationErrors.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Extensions/FluentValidationExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChatTeamChallenge.ApiServices.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ChatTeamChallenge.ApiServices.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/AuthController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/MessageController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/MessageController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/RegisterController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/RegisterController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/TokenController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/TokenController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/UserController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Extensions/ServiceExtension.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Extensions/ServiceExtension.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Filters/ExceptionFilterExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Filters/ExceptionFilterExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Validators/EmailValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Validators/User/EmailValidator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Validators/User/LoginUserDtoValidator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Validators/User/RegisterUserDtoValidator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Validators/User/RegisterUserDtoValidator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.BLL/ChatTeamChallenge.BLL.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.BLL/ChatTeamChallenge.BLL.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.BLL/Errors/DomainErrors.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.BLL/Errors/DomainErrors.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.BLL/Exceptions/ChatException.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.BLL/Interfaces/Services/IAuthService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.BLL/Interfaces/Services/IAuthService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.BLL/Interfaces/Services/IMessageService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.BLL/Interfaces/Services/IMessageService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.BLL/Interfaces/Services/IUserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.BLL/Interfaces/Services/IUserService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.BLL/Services/AuthService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.BLL/Services/AuthService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.BLL/Services/MessageService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.BLL/Services/MessageService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.BLL/Services/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.BLL/Services/UserService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.Common/BaseEntities/BaseController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.Common/ChatTeamChallenge.Common.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.Common/ChatTeamChallenge.Common.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.Common/Dto/LoginUserDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.Common/Dto/User/LoginUserDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.Common/Dto/RegisterUserDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.Common/Dto/User/RegisterUserDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.Common/Dto/UpdateUserDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.Common/Dto/User/UpdateUserDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.Common/Enums/ErrorCode.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/Messages/Commands/Create/CreateMessageCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/Messages/Commands/Create/CreateMessageCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/Messages/Commands/Create/CreateMessageCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/Messages/Commands/Create/CreateMessageCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/Messages/Commands/Remove/RemoveMessageCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/Messages/Commands/Remove/RemoveMessageCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/Messages/Commands/Remove/RemoveMessageCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/Messages/Commands/Remove/RemoveMessageCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/Messages/Commands/Update/UpdateMessageCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/Messages/Commands/Update/UpdateMessageCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/Messages/Commands/Update/UpdateMessageCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/Messages/Commands/Update/UpdateMessageCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/RefreshTokens/Commands/Create/CreateRefreshTokenCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/RefreshTokens/Commands/Create/CreateRefreshTokenCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/RefreshTokens/Commands/Create/CreateRefreshTokenCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/RefreshTokens/Commands/Create/CreateRefreshTokenCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/RefreshTokens/Commands/Remove/RemoveRefreshTokenCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/RefreshTokens/Commands/Remove/RemoveRefreshTokenCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/RefreshTokens/Commands/Remove/RemoveRefreshTokenCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/RefreshTokens/Commands/Remove/RemoveRefreshTokenCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/Users/Commands/Create/CreateUserCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/Users/Commands/Create/CreateUserCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/Users/Commands/Create/CreateUserCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/Users/Commands/Create/CreateUserCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/Users/Commands/Delete/RemoveUserCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/Users/Commands/Delete/RemoveUserCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/Users/Commands/Delete/RemoveUserCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/Users/Commands/Delete/RemoveUserCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/Users/Commands/Update/UpdateUserCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/Users/Commands/Update/UpdateUserCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/Users/Commands/Update/UpdateUserCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Abstractions/Users/Commands/Update/UpdateUserCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/MappingProfiles/UserProfile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/MappingProfiles/UserProfile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Primitives/Error.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.Common/Primitives/Error.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Primitives/Result/Result.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.Common/Primitives/Result/Result.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Primitives/Result/ResultExtensions.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Primitives/Result/ResultT.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.Common/Primitives/Result/ResultT.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ChatTeamChallenge.DAL/Primitives/ValueObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../ChatTeamChallenge.Common/Primitives/ValueObject.cs" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 6
+}]]></component>
+  <component name="ProjectId" id="2XUe760DORXn5fXmf8ReFqg8qYK" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "feature/chat/task-120-messange-instance-relations",
+    "settings.editor.selected.configurable": "preferences.environmentSetup",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ac4c0f1c-97e1-4f88-813b-95b7dd2b6e74" name="Changes" comment="" />
+      <created>1698687915099</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1698687915099</updated>
+      <workItem from="1698687916206" duration="4000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>

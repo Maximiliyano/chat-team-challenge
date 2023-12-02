@@ -1,0 +1,12 @@
+﻿services:
+  chatteamchallenge.testing:
+    image: chatteamchallenge.testing
+    build:
+      context: .
+      dockerfile: ChatTeamChallenge.Testing/Dockerfile
+
+  chatteamchallenge.testing-1:
+    image: chatteamchallenge.testing-1
+    build:
+      context: .
+      dockerfile: ChatTeamChallenge.Testing/Dockerfile
