@@ -3,6 +3,5 @@
 public static class EndpointApiConstants
 {
     public const string MediaType = "application/json";
-    
-    
+    public const string SessionUrl = "session";
 }

@@ -1,4 +1,6 @@
-﻿namespace ChatTeamChallenge.Domain.Models;
+﻿using ChatTeamChallenge.Contracts.Enums;
+
+namespace ChatTeamChallenge.Domain.Models;
 
 public sealed class ChatMemberModel
 {
@@ -12,6 +14,7 @@ public sealed class ChatMemberModel
     public int Id { get; set; }
     public int UserId { get; set; }
     public int ChatId { get; set; }
+    public ChatMemberRoles Role { get; set; }
     
     public UserModel? User { get; set; }
 

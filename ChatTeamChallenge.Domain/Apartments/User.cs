@@ -27,11 +27,12 @@ public sealed class User : AggregateRoot, IAuditableEntity
     public static User Create(
         string userName, string email, string passwordHash, string city, bool isRemote,
         CreativeRoles roles,
-        string? description, string? instagramLink, string? discordLink, string? telegramLink, 
-        string? spotifyLink)
+        string? description = null, string? instagramLink = null, string? discordLink = null, string? telegramLink = null, 
+        string? spotifyLink = null, int? id = null)
     {
         var user = new User
         {
+            Id = id ?? 0,
             City = city,
             CreatedAt = DateTime.UtcNow,
             UpdatedAt = null,

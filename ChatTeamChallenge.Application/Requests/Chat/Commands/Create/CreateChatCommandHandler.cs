@@ -28,8 +28,7 @@ public sealed class CreateChatCommandHandler : ICommandHandler<CreateChatCommand
         
         var chatInstance = Domain.Apartments.Chat.Create(
             request.Topic,
-            request.IsPublic,
-            DateTime.UtcNow);
+            request.IsPublic);
         
         await _chatRepository.InsertAsync(chatInstance);
         await _unitOfWork.SaveChangesAsync(cancellationToken);

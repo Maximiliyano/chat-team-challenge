@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using ChatTeamChallenge.Contracts.Common;
+using ChatTeamChallenge.Contracts.Common.Constants;
 using ChatTeamChallenge.Contracts.User;
 
 namespace ChatTeamChallenge.Contracts.Authentication;

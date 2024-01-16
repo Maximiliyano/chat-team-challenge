@@ -14,5 +14,5 @@ public sealed class CreationMessageRequest
     
     public int? ReceiverId { get; init; } 
     
-    // TODO upload image
+    public CreationMessageFileRequest? File { get; init; }
 }

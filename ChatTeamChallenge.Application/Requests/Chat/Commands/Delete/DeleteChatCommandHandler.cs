@@ -2,7 +2,6 @@
 using ChatTeamChallenge.Application.Core.Abstractions.Messaging;
 using ChatTeamChallenge.Domain.Core.Errors;
 using ChatTeamChallenge.Domain.Core.Primities.Result;
-using ChatTeamChallenge.Domain.Helpers;
 using ChatTeamChallenge.Domain.Reviews;
 
 namespace ChatTeamChallenge.Application.Requests.Chat.Commands.Delete;
@@ -39,15 +38,13 @@ public sealed class DeleteChatCommandHandler : IQueryHandler<DeleteChatCommand, 
         {
             return Result.Failure(DomainErrors.ChatMember.NotFound);
         }
-        
-        if (chat.Messages is null)
-        {
-            return Result.Failure(DomainErrors.Message.NotFound(request.Id));
-        }
 
-        foreach (var message in chat.Messages)
+        if (chat.Messages is not null)
         {
-            await _messageRepository.RemoveAsync(message);
+            foreach (var message in chat.Messages)
+            {
+                await _messageRepository.RemoveAsync(message);
+            }
         }
         
         foreach (var chatMember in chat.Members)

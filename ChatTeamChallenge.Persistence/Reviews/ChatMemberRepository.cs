@@ -29,15 +29,23 @@ public sealed class ChatMemberRepository : RepositoryBase<ChatMember>, IChatMemb
         
         if (userId.HasValue)
         {
-            queries = queries.Where(c => c.ChatId == chatId);
+            queries = queries.Where(c => c.UserId == userId);
         }
 
         if (chatId.HasValue)
         {
-            queries = queries.Where(c => c.UserId == userId);
+            queries = queries.Where(c => c.ChatId == chatId);
         }
 
         var pagedListChats = await PagedList<ChatMember>.CreateAsync(queries, page, pageSize);
         return pagedListChats;
+    }
+
+    public async Task RemoveRange(IEnumerable<ChatMember> chatMembers)
+    {
+        foreach (var chatMember in chatMembers)
+        {
+            await RemoveAsync(chatMember);
+        }
     }
 }

@@ -17,7 +17,7 @@ public sealed class UserApi : ClientApi
     
     public async Task<HttpResponseMessage> DeleteAsync(int userId)
     {
-        var request = CreateDeleteRequest(string.Empty);
+        var request = CreateDeleteRequest($"?userId={userId}");
         
         // TODO add query $"?{nameof(userId)}={userId}"
         

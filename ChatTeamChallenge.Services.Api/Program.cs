@@ -1,4 +1,3 @@
-using System.Net;
 using ChatTeamChallenge.Testing.Common.Helpers;
 
 namespace ChatTeamChallenge.Services.Api;
@@ -15,10 +14,14 @@ public static class Program
                 webBuilder.ConfigureAppConfiguration(config => config
                     .AddJsonFile(ConfigurationHelper.GetConfigFileName(), false, false));
 
-                webBuilder.ConfigureKestrel(options =>
+                webBuilder.UseUrls("http://*:8080");
+                
+                webBuilder.UseKestrel(options =>
                 {
-                    options.Listen(IPAddress.Any, Convert.ToInt32(Environment.GetEnvironmentVariable("PORT")));
+                    options.ListenAnyIP(8080);
                 });
+
+                webBuilder.UseIIS();
                 
                 webBuilder.UseStartup<Startup>();
             });

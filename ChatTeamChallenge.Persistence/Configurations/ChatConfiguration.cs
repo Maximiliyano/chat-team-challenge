@@ -1,6 +1,13 @@
-﻿namespace ChatTeamChallenge.Persistence.Configurations;
+﻿using ChatTeamChallenge.Domain.Apartments;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-public class ChatConfiguration
+namespace ChatTeamChallenge.Persistence.Configurations;
+
+public sealed class ChatConfiguration : IEntityTypeConfiguration<Chat>
 {
-    
+    public void Configure(EntityTypeBuilder<Chat> builder)
+    {
+        builder.ToTable("Chats");
+    }
 }

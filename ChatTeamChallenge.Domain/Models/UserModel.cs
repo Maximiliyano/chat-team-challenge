@@ -16,7 +16,6 @@ public sealed class UserModel : BaseModel
     public string? DiscordLink { get; set; }
     public string? TelegramLink { get; set; }
     public string? SpotifyLink { get; set; }
-    // TODO add user ability have a lots of chat
 
     public static UserModel Create(
         int id,

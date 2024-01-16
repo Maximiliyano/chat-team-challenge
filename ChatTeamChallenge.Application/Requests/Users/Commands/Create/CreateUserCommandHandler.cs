@@ -1,6 +1,7 @@
 ﻿using ChatTeamChallenge.Application.Core.Abstractions.Data;
 using ChatTeamChallenge.Application.Core.Abstractions.Messaging;
 using ChatTeamChallenge.Domain.Apartments;
+using ChatTeamChallenge.Domain.Core.Errors;
 using ChatTeamChallenge.Domain.Core.Primities.Result;
 using ChatTeamChallenge.Domain.Reviews;
 
@@ -21,6 +22,16 @@ public sealed class CreateUserCommandHandler : ICommandHandler<CreateUserCommand
     
     public async Task<Result<int>> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
+        var isUserEmailUnique = await _userRepository.IsEmailUniqueAsync(request.Email);
+
+        if (!isUserEmailUnique)
+            return Result.Failure<int>(DomainErrors.User.IsEmailNotUnique);
+
+        var isUsernameUnique = await _userRepository.IsUsernameUniqueAsync(request.Username);
+
+        if (!isUsernameUnique)
+            return Result.Failure<int>(DomainErrors.User.IsUsernameNotUnique);
+
         var hashedPassword = BCrypt.Net.BCrypt.HashPassword(request.Password);
         
         var user = User.Create(

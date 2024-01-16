@@ -18,13 +18,25 @@ public static class DomainErrors
             HttpStatusCode.NotFound, 
             $"The user with ID: {entity} was not found.");
 
-        public static Error RepeatError => new(
+        public static Error IsUsernameNotUnique => new(
             HttpStatusCode.Conflict,
-            "Entity with the same key is exist in system");
+            "The specified username are exist in system.");
+        
+        public static Error IsEmailNotUnique => new(
+            HttpStatusCode.Conflict,
+            "The specified email are exist in system.");
+        
+        public static Error RoleIsAlreadySet => new(
+            HttpStatusCode.Conflict,
+            "The role is already set in the system.");
     }
     
     public static class Chat
     {
+        public static Error ImpossibleToDelete => new(
+            HttpStatusCode.Conflict, 
+            "The chat impossible to delete.");
+        
         public static Error NotFound => new(
             HttpStatusCode.NotFound, 
             "The chat with the specified identifier was not found.");
@@ -51,6 +63,10 @@ public static class DomainErrors
         public static Error IsNotAdded => new(
             HttpStatusCode.BadRequest,
             "The user is not added to this chat.");
+
+        public static Error ChatIsNotFounded => new(
+            HttpStatusCode.NotFound,
+            "The chat is not founded in user");
     }
     
     public static class Message
@@ -84,10 +100,6 @@ public static class DomainErrors
         public static Error InvalidEmailOrPassword => new(
             HttpStatusCode.BadRequest,
             "The specified email or password are incorrect.");
-
-        public static Error IsEmailNotUnique => new(
-            HttpStatusCode.BadRequest,
-            "The specified email are exist in system.");
     }
     
     public static class RefreshToken
@@ -106,5 +118,20 @@ public static class DomainErrors
         public static Error InvalidToken => new(
             HttpStatusCode.BadRequest,
             "The specified token is not valid.");
+    }
+    
+    public static class File
+    {
+        public static Error WrongType => new(
+            HttpStatusCode.BadRequest,
+            "Incorrect file type. It is not support current extension.");
+        
+        public static Error Missing => new(
+            HttpStatusCode.BadRequest,
+            "The file is missing");
+
+        public static Error MaximumSize(int maxSizeInMb) => new(
+            HttpStatusCode.BadRequest,
+            $"CommonFile is exceeded maximum size. Try to upload file less than {maxSizeInMb} MB");
     }
 }

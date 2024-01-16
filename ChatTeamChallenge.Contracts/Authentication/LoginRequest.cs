@@ -1,13 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using ChatTeamChallenge.Contracts.Common;
+using ChatTeamChallenge.Contracts.Common.Constants;
 
 namespace ChatTeamChallenge.Contracts.Authentication;
 
-public sealed class LoginRequest
+public sealed class LoginRequest 
 {
     [MaxLength(250)]
-    [RegularExpression(PatternConstants.EmailPattern)]
-    public required string Email { get; init; }
+    public required string Credential { get; init; }
     
     [RegularExpression(PatternConstants.PasswordPattern)]
     public required string Password { get; init; }

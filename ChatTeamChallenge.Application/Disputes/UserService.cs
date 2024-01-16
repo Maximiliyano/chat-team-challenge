@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ChatTeamChallenge.Application.Requests.Users.Commands.ChangeRole;
 using ChatTeamChallenge.Application.Requests.Users.Commands.Create;
 using ChatTeamChallenge.Application.Requests.Users.Commands.Delete;
 using ChatTeamChallenge.Application.Requests.Users.Commands.Update;
@@ -6,7 +7,6 @@ using ChatTeamChallenge.Contracts.Authentication;
 using ChatTeamChallenge.Contracts.Common;
 using ChatTeamChallenge.Contracts.Enums;
 using ChatTeamChallenge.Contracts.User;
-using ChatTeamChallenge.Domain.Apartments;
 using ChatTeamChallenge.Domain.Core.Errors;
 using ChatTeamChallenge.Domain.Core.Primities.Result;
 using ChatTeamChallenge.Domain.Interfaces;
@@ -34,18 +34,16 @@ public sealed class UserService : IUserService
 
     public async Task<Result<UserModel>> CreateAsync(RegisterRequest registerRequest)
     {
-        var user = await _userRepository.ReadByEmailAsync(registerRequest.Email);
+        var createUserCommand = new CreateUserCommand(registerRequest);
+        var result = await _mediator.Send(createUserCommand);
 
-        if (user is not null)
-            return Result.Failure<UserModel>(DomainErrors.User.RepeatError);
-        
-        var createCommand = new CreateUserCommand(registerRequest);
-        await _mediator.Send(createCommand);
+        if (result.IsFailure)
+            return Result.Failure<UserModel>(result.Error);
             
-        var createdUser = await ReadByEmailAsync(registerRequest.Email);
-        return createdUser.IsFailure ? 
-            Result.Failure<UserModel>(createdUser.Error) : 
-            Result.Success(createdUser.Value);
+        var createdUserResponse = await ReadByEmailAsync(registerRequest.Email);
+        return createdUserResponse.IsFailure ? 
+            Result.Failure<UserModel>(createdUserResponse.Error) : 
+            Result.Success(createdUserResponse.Value);
     }
 
     public async Task<Result<PagedList<UserModel>>> ReadAllAsync(int page, int pageSize)
@@ -61,7 +59,6 @@ public sealed class UserService : IUserService
     public async Task<Result<UserModel>> ReadByIdAsync(int userId)
     {
         var entity = await _userRepository.ReadByIdAsync(userId);
-
         return entity is null
             ? Result.Failure<UserModel>(DomainErrors.User.NotFound(userId)) 
             : Result.Success(_mapper.Map<UserModel>(entity));
@@ -70,10 +67,14 @@ public sealed class UserService : IUserService
     public async Task<Result<UserModel>> ReadByEmailAsync(string email)
     { 
         var entity = await _userRepository.ReadByEmailAsync(email);
-
         return entity is null 
             ? Result.Failure<UserModel>(DomainErrors.User.NotFound(email)) 
             : Result.Success(_mapper.Map<UserModel>(entity));
+    }
+
+    public async Task<bool> IsUserExistAsync(int userId)
+    {
+        return await _userRepository.IsUserExistAsync(userId);
     }
 
     public async Task<Result> ChangePasswordAsync(int userId, string newPassword)
@@ -96,14 +97,31 @@ public sealed class UserService : IUserService
         return result;
     }
 
+    public async Task<Result> ChangeRoleAsync(int userId, CreativeRoles roles)
+    {
+        var changeRoleUserCommand = new ChangeRoleUserCommand(userId, roles);
+        var result = await _mediator.Send(changeRoleUserCommand);
+        
+        var updateCommand = _mapper.Map<UpdateUserCommand>(result.Value); // TODO new update yser command
+        return await _mediator.Send(updateCommand);
+    }
+
     public async Task<Result> UpdateAsync(UpdateUserRequest updatedUserDto)
     {
         var userResult = await ReadByIdAsync(updatedUserDto.Id);
 
         if (userResult.IsFailure)
             return Result.Failure<UserModel>(userResult.Error);
-
+        
         var user = userResult.Value;
+        
+        if(user.Username == updatedUserDto.Username)
+            return Result.Failure<int>(DomainErrors.User.IsUsernameNotUnique);
+        
+        if (user.Roles != updatedUserDto.Roles)
+        {
+            await ChangeRoleAsync(user.Id, updatedUserDto.Roles);
+        }
         
         user.IsRemote = updatedUserDto.IsRemote;
         user.Username = updatedUserDto.Username;

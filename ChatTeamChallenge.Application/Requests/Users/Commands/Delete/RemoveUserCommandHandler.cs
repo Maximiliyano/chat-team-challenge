@@ -1,7 +1,5 @@
-﻿using AutoMapper;
-using ChatTeamChallenge.Application.Core.Abstractions.Data;
+﻿using ChatTeamChallenge.Application.Core.Abstractions.Data;
 using ChatTeamChallenge.Application.Core.Abstractions.Messaging;
-using ChatTeamChallenge.Contracts.Enums;
 using ChatTeamChallenge.Domain.Apartments;
 using ChatTeamChallenge.Domain.Core.Primities.Result;
 using ChatTeamChallenge.Domain.Helpers;
@@ -16,24 +14,21 @@ public sealed class RemoveUserCommandHandler : ICommandHandler<RemoveUserCommand
     private readonly IChatMemberRepository _chatMemberRepository;
     private readonly IUserRepository _userRepository;
     private readonly IUnitOfWork _unitOfWork;
-    private readonly IMapper _mapper;
     
     public RemoveUserCommandHandler(
         IMessageRepository messageRepository,
         IChatRepository chatRepository,
         IChatMemberRepository chatMemberRepository,
         IUserRepository userRepository,
-        IUnitOfWork unitOfWork, 
-        IMapper mapper)
+        IUnitOfWork unitOfWork)
     {
         _messageRepository = messageRepository;
         _chatRepository = chatRepository;
         _chatMemberRepository = chatMemberRepository;
         _userRepository = userRepository;
         _unitOfWork = unitOfWork;
-        _mapper = mapper;
     }
-    // TODO
+    
     public async Task<Result<int>> Handle(RemoveUserCommand request, CancellationToken cancellationToken)
     {
         var user = User.Create(
@@ -54,12 +49,12 @@ public sealed class RemoveUserCommandHandler : ICommandHandler<RemoveUserCommand
         {
             foreach (var chatMember in user.Members)
             {
-                if (chatMember.Chat is not null && user.Roles == CreativeRoles.Moderator)
-                {
-                    
-                }
-                
                 await _chatMemberRepository.RemoveAsync(chatMember);
+                
+                if (chatMember.Chat is not null && chatMember.Chat.Members?.Count() == 1)
+                {
+                    await _chatRepository.RemoveAsync(chatMember.Chat);
+                }
             }
         }
         

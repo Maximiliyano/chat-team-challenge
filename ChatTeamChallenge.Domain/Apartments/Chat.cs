@@ -15,13 +15,14 @@ public sealed class Chat : AggregateRoot, IAuditableEntity
     public IEnumerable<Message>? Messages { get; set; }
     public IEnumerable<ChatMember>? Members { get; set; }
 
-    public static Chat Create(string topic, bool isPublic, DateTime createdAt)
+    public static Chat Create(string topic, bool isPublic, int? id = null)
     {
         var chat = new Chat
         {
+            Id = id ?? 0,
             Topic = topic,
             IsPublic = isPublic,
-            CreatedAt = createdAt,
+            CreatedAt = DateTime.UtcNow,
             UpdatedAt = null
         };
 

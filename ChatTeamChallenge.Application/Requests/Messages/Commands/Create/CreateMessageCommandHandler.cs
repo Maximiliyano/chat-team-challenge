@@ -27,9 +27,7 @@ public sealed class CreateMessageCommandHandler : ICommandHandler<CreateMessageC
             request.UserName,
             request.Body,
             false,
-            DateTime.UtcNow,
-            null,
-            request.ReceiverId);
+            receiveId: request.ReceiverId);
         
         await _messageRepository.InsertAsync(message);
         await _unitOfWork.SaveChangesAsync(cancellationToken);

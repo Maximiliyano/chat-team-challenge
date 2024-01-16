@@ -3,7 +3,7 @@
 [Flags]
 public enum CreativeRoles
 {
-    User = 0,
+    None = 0,
     Artist = 1 << 0,
     Creator = 1 << 1,
     Designer = 1 << 2,
@@ -12,6 +12,5 @@ public enum CreativeRoles
     Photographer = 1 << 5,
     Painter = 1 << 6,
     Musician = 1 << 7,
-    Writer = 1 << 8,
-    Moderator = 1 << 9
+    Writer = 1 << 8
 }

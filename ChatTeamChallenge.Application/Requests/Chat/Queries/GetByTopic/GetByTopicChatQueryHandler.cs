@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using ChatTeamChallenge.Application.Core.Abstractions.Messaging;
-using ChatTeamChallenge.Application.Requests.Chat.Queries.GetById;
 using ChatTeamChallenge.Domain.Core.Errors;
 using ChatTeamChallenge.Domain.Core.Primities.Result;
 using ChatTeamChallenge.Domain.Models;

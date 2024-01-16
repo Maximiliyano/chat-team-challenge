@@ -46,7 +46,7 @@ public sealed class AddUserToChatCommandHandler : ICommandHandler<AddUserToChatC
             return Result.Failure<int>(DomainErrors.User.NotFound(request.UserId));
         }
         
-        var chatMember = ChatMember.Create(request.UserId, request.ChatId, DateTime.UtcNow);
+        var chatMember = ChatMember.Create(request.UserId, request.ChatId, request.Role);
 
         await _chatMemberRepository.InsertAsync(chatMember);
         await _unitOfWork.SaveChangesAsync(cancellationToken);

@@ -2,10 +2,11 @@
 using System.Net;
 using ChatTeamChallenge.Application.Infrastructure;
 using ChatTeamChallenge.Contracts.Common;
+using ChatTeamChallenge.Contracts.Enums;
 using ChatTeamChallenge.Contracts.User;
 using ChatTeamChallenge.Domain.Core.Errors;
 using ChatTeamChallenge.Domain.Interfaces;
-using ChatTeamChallenge.Services.Api.Extensions;
+using ChatTeamChallenge.Services.Api.Utilities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,9 +22,14 @@ public sealed class UserController : ApiController
     }
 
     [HttpGet(ApiRoutes.User.GetById)]
-    public async Task<IActionResult> GetById([FromRoute] int id)
+    public async Task<IActionResult> GetById()
     {
-        var entityResult = await _userService.ReadByIdAsync(id);
+        var userFromResult = this.GetUserIdFromToken();
+
+        if (userFromResult.IsFailure)
+            return BadRequest(userFromResult.Error);
+        
+        var entityResult = await _userService.ReadByIdAsync(userFromResult.Value);
         return this.FromResult(entityResult);
     }
     
@@ -46,23 +52,12 @@ public sealed class UserController : ApiController
         var pagedListUsersResult = await _userService.ReadAllAsync(page, pageSize);
         return this.FromResult(pagedListUsersResult);
     }
-    
-    [HttpGet(ApiRoutes.User.GetFromToken)]
-    public async Task<IActionResult> GetUserFromToken()
-    {
-        var userFromResult = this.GetUserIdFromToken();
-
-        if (userFromResult.IsFailure)
-            return BadRequest(userFromResult.Error);
-        
-        var userResult = await _userService.ReadByIdAsync(userFromResult.Value);
-        return this.FromResult(userResult);
-    }
 
     [AllowAnonymous]
     [HttpPut(ApiRoutes.User.ChangePassword)]
-    public async Task<IActionResult> ChangePasswordAsync([FromRoute] int userId, 
-        [FromQuery] // TODO 
+    public async Task<IActionResult> ChangePasswordAsync( 
+        [FromRoute] int userId,
+        [FromQuery] // TODO instead ID check email with verification
         [MinLength(8)]
         [MaxLength(16)] string newPassword)
     {
@@ -72,6 +67,15 @@ public sealed class UserController : ApiController
         }
         
         var result = await _userService.ChangePasswordAsync(userId, newPassword.Trim());
+        return this.FromResult(result);
+    }
+    
+    [HttpPut(ApiRoutes.User.ChangeRole)]
+    public async Task<IActionResult> ChangeRole(
+        [FromRoute] int userId, 
+        [FromRoute] CreativeRoles role)
+    {
+        var result = await _userService.ChangeRoleAsync(userId, role);
         return this.FromResult(result);
     }
 
@@ -88,9 +92,14 @@ public sealed class UserController : ApiController
     }
 
     [HttpDelete]
-    public async Task<IActionResult> DeleteAsync([FromQuery] int userId)
+    public async Task<IActionResult> DeleteAsync()
     {
-        var result = await _userService.DeleteAsync(userId);
+        var userFromResult = this.GetUserIdFromToken();
+
+        if (userFromResult.IsFailure)
+            return BadRequest(userFromResult.Error);
+        
+        var result = await _userService.DeleteAsync(userFromResult.Value);
         return this.FromResult(result, successCode: HttpStatusCode.NoContent);
     }
 }

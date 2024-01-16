@@ -1,5 +1,6 @@
 ﻿using ChatTeamChallenge.Contracts.Authentication;
 using ChatTeamChallenge.Contracts.ChatMember;
+using ChatTeamChallenge.Contracts.Enums;
 using ChatTeamChallenge.Contracts.Message;
 using ChatTeamChallenge.Domain.Apartments;
 using ChatTeamChallenge.Domain.Models;
@@ -23,8 +24,8 @@ public static class GlobalBuilderHelper
             UserId = userId
         };
 
-    public static AccessTokenResponse BuildAccessTokenDto(AccessToken accessToken, string token) =>
-        new(accessToken, token);
+    public static AccessTokenResponse BuildAccessTokenDto(AccessToken accessToken, string token, UserModel? user = null) =>
+        new(accessToken, token, user);
 
     public static SearchMessageRequest BuildSearchMessageDto(int? senderId = null, int? receiverId = null, int? chatId = null, bool? isRead = null, DateTime? date = null) =>
         new()
@@ -36,10 +37,11 @@ public static class GlobalBuilderHelper
             Date = date
         };
 
-    public static ChatMemberRequest BuildChatMemberRequest(int userId, int chatId) =>
+    public static ChatMemberRequest BuildChatMemberRequest(int userId, int chatId, ChatMemberRoles role) =>
         new()
         {
             UserId = userId,
-            ChatId = chatId
+            ChatId = chatId,
+            Role = role
         };
 }

@@ -1,8 +1,8 @@
 ﻿using ChatTeamChallenge.Application.Hubs;
 using ChatTeamChallenge.Persistence;
 using ChatTeamChallenge.Persistence.Infrastructure;
-using ChatTeamChallenge.Services.Api.Extensions;
-using ChatTeamChallenge.Services.Api.Middleware;
+using ChatTeamChallenge.Services.Api.Middlewares;
+using ChatTeamChallenge.Services.Api.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
@@ -26,6 +26,8 @@ public class Startup
         
         services.Configure<ApiBehaviorOptions>(options => options.SuppressModelStateInvalidFilter = true);
 
+        services.AddHealthChecks();
+        
         services.AddControllers();
         
         services.AddSwaggerGen(options =>
@@ -76,11 +78,11 @@ public class Startup
         if (env.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
-            
-            app.UseSwagger();
-            
-            app.UseSwaggerUI();
         }
+        
+        app.UseSwagger();
+        
+        app.UseSwaggerUI();
         
         AutoMigrateDatabase(app.ApplicationServices);
 
@@ -105,6 +107,7 @@ public class Startup
 
         app.UseEndpoints(cfg =>
         {
+            cfg.MapHealthChecks("/health");// TODO health check
             cfg.MapControllers();
             cfg.MapHub<ChatHub>("/chatHub");
         });

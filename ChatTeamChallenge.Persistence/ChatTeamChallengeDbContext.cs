@@ -52,7 +52,6 @@ public class ChatTeamChallengeDbContext : DbContext, IDbContext, IUnitOfWork
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         
-        modelBuilder.Configure();
         modelBuilder.Seed();
         
         base.OnModelCreating(modelBuilder);

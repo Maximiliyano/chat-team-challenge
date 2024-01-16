@@ -10,10 +10,10 @@ public static class TestHelper
         new Faker<RegisterRequest>().CustomInstantiator(f => new RegisterRequest
         {
             Email = f.Internet.Email(),
-            Password = f.Internet.Password(),
+            Password = "Passw0rd",
             IsRemote = false,
             Username = f.Internet.UserName(),
             City = f.Address.City(),
-            Roles = CreativeRoles.User
+            Roles = CreativeRoles.None
         }).Generate();
 }

@@ -1,4 +1,5 @@
 ﻿using Bogus;
+using ChatTeamChallenge.Contracts.Common.Constants;
 using ChatTeamChallenge.Contracts.Enums;
 using ChatTeamChallenge.Domain.Apartments;
 using Microsoft.EntityFrameworkCore;
@@ -8,63 +9,13 @@ namespace ChatTeamChallenge.Persistence.Extensions;
 public static class ModelBuilderExtension
 {
     private const int EntityCount = 10;
-    
-    public static void Configure(this ModelBuilder modelBuilder) // TODO rework to configurations
-    {
-        modelBuilder.Entity<RefreshToken>(builder =>
-        {
-            builder.ToTable("Tokens");
-            
-            builder.Ignore(t => t.IsActive);
-        });
-
-        modelBuilder.Entity<User>(builder =>
-        {
-            builder.ToTable("Users");
-        });
-        
-        modelBuilder.Entity<Message>(builder =>
-        {
-            builder.ToTable("Messages");
-
-            builder
-                .HasOne(m => m.Chat)
-                .WithMany(c => c.Messages)
-                .HasForeignKey(m => m.ChatId)
-                .OnDelete(DeleteBehavior.Restrict);
-        });
-
-        modelBuilder.Entity<Chat>(builder =>
-        {
-            builder.ToTable("Chats");
-        });
-
-        modelBuilder.Entity<ChatMember>(builder =>
-        {
-            builder.ToTable("ChatMembers");
-
-            builder.HasKey(c => c.Id);
-            
-            builder
-                .HasOne(c => c.Chat)
-                .WithMany(c => c.Members)
-                .HasForeignKey(c => c.ChatId)
-                .OnDelete(DeleteBehavior.Restrict);
-            
-            builder
-                .HasOne(c => c.User)
-                .WithMany(u => u.Members)
-                .HasForeignKey(c => c.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
-        });
-    }
 
     public static void Seed(this ModelBuilder modelBuilder)
     {
         var chats = GenerateRandomChats();
         var users = GenerateRandomUsers();
-        var chatMembers = GenerateRandomChatMembers(users, chats);
-        var messages = GenerateRandomMessages(chats, users.ToList());
+        var chatMembers = GenerateRandomChatMembers(users);
+        var messages = GenerateRandomMessages(users.ToList());
         
         modelBuilder.Entity<User>().HasData(users);
         modelBuilder.Entity<Message>().HasData(messages);
@@ -72,15 +23,16 @@ public static class ModelBuilderExtension
         modelBuilder.Entity<ChatMember>().HasData(chatMembers);
     }
 
-    private static IEnumerable<ChatMember> GenerateRandomChatMembers(IReadOnlyCollection<User> users, IReadOnlyCollection<Chat> chats)
+    private static IEnumerable<ChatMember> GenerateRandomChatMembers(
+        IReadOnlyCollection<User> users)
     {
         var chatMemberId = 1;
         
         var testChatMembers = new Faker<ChatMember>()
             .CustomInstantiator(f => ChatMember.Create(
                 f.PickRandom<User>(users).Id, 
-                f.PickRandom<Chat>(chats).Id,
-                DateTime.UtcNow,
+                EntityConstants.GeneralChatId,
+                f.PickRandom<ChatMemberRoles>(),
                 chatMemberId++));
 
         var generatedChatMembers = testChatMembers.Generate(EntityCount);
@@ -88,39 +40,40 @@ public static class ModelBuilderExtension
     }
 
 
-    private static IReadOnlyCollection<Chat> GenerateRandomChats()
+    private static IEnumerable<Chat> GenerateRandomChats()
     {
-        var chatId = 1;
+        var chatId = EntityConstants.GeneralChatId + 1;
+        var roles = Enum.GetValues<CreativeRoles>().Except(new[] { CreativeRoles.None });
+        var generatedChats = new List<Chat>
+        {
+            Chat.Create(
+                EntityConstants.GeneralChatName,
+                EntityConstants.GeneralChatPrivacy,
+                EntityConstants.GeneralChatId)
+        };
 
-        var testChats = new Faker<Chat>() // TODO use create method
-            .CustomInstantiator(f => new Chat
-            {
-                Id = chatId++,
-                Topic = f.Random.Words(),
-                IsPublic = f.Random.Bool(),
-                CreatedAt = DateTime.UtcNow
-            });
-        
-        var generatedChats = testChats.Generate(EntityCount);
+        generatedChats
+            .AddRange(roles
+                .Select(role => 
+                    Chat.Create(Enum.GetName(role)!, false, chatId++)));
+
         return generatedChats;
     }
     
-    private static IEnumerable<Message> GenerateRandomMessages(IEnumerable<Chat> chats, IList<User> users)
+    private static IEnumerable<Message> GenerateRandomMessages(IList<User> users)
     {
         var messageId = 1;
 
-        var testMessages = new Faker<Message>() // TODO use create method
-            .CustomInstantiator(f => new Message
-            {
-                Id = messageId++,
-                SenderId = f.PickRandom(users).Id,
-                SenderUserName = f.PickRandom(users).Username,
-                ReceiverId = f.PickRandom(users).Id,
-                ChatId = f.PickRandom(chats).Id,
-                IsRead = f.Random.Bool(),
-                Body = f.Random.Words(10),
-                CreatedAt = DateTime.UtcNow
-            });
+        var testMessages = new Faker<Message>()
+            .CustomInstantiator(f => Message.Create(
+                f.PickRandom(users).Id,
+                1,
+                f.PickRandom(users).Username,
+                f.Random.Words(10),
+                f.Random.Bool(),
+                receiveId: f.PickRandom(users).Id,
+                id: messageId++
+            ));
 
         var generatedMessages = testMessages.Generate(EntityCount);
         return generatedMessages;
@@ -130,23 +83,21 @@ public static class ModelBuilderExtension
     {
         var userId = 1;
 
-        var testUsersFake = new Faker<User>() // TODO use create method
-            .CustomInstantiator(f => new User
-            {
-                Id = userId++,
-                City = f.Address.City(),
-                Email = f.Internet.Email(),
-                Username = f.Internet.UserName(),
-                Password = BCrypt.Net.BCrypt.HashPassword(f.Internet.Password(16)),
-                CreatedAt = DateTime.UtcNow,
-                Roles = f.PickRandom<CreativeRoles>(),
-                IsRemote = f.Random.Bool(),
-                Description = f.Random.Words(10),
-                InstagramLink = f.Person.Website,
-                DiscordLink = f.Person.Website,
-                TelegramLink = f.Person.Website,
-                SpotifyLink = f.Person.Website
-            });
+        var testUsersFake = new Faker<User>()
+            .CustomInstantiator(f => User.Create(
+                f.Internet.UserName(),
+                f.Internet.Email(),
+                BCrypt.Net.BCrypt.HashPassword(f.Internet.Password(16)),
+                f.Address.City(),
+                f.Random.Bool(),
+                f.PickRandom<CreativeRoles>(),
+                f.Random.Words(10),
+                f.Person.Website,
+                f.Person.Website,
+                f.Person.Website,
+                f.Person.Website,
+                id: userId++
+            ));
 
         var generatedUsers = testUsersFake.Generate(EntityCount);
         return generatedUsers;

@@ -51,72 +51,72 @@ namespace ChatTeamChallenge.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 50, 564, DateTimeKind.Utc).AddTicks(1484),
-                            IsPublic = false,
-                            Topic = "invoice Tunnel"
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 1, 845, DateTimeKind.Utc).AddTicks(1507),
+                            IsPublic = true,
+                            Topic = "General"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 50, 564, DateTimeKind.Utc).AddTicks(1588),
-                            IsPublic = true,
-                            Topic = "indexing bypassing Incredible Rubber Bacon"
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 1, 845, DateTimeKind.Utc).AddTicks(1907),
+                            IsPublic = false,
+                            Topic = "Artist"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 50, 564, DateTimeKind.Utc).AddTicks(1660),
-                            IsPublic = true,
-                            Topic = "Rustic Frozen Chips Enterprise-wide Yuan Renminbi"
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 1, 845, DateTimeKind.Utc).AddTicks(1915),
+                            IsPublic = false,
+                            Topic = "Creator"
                         },
                         new
                         {
                             Id = 4,
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 50, 564, DateTimeKind.Utc).AddTicks(1687),
-                            IsPublic = true,
-                            Topic = "Chad upward-trending"
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 1, 845, DateTimeKind.Utc).AddTicks(1922),
+                            IsPublic = false,
+                            Topic = "Designer"
                         },
                         new
                         {
                             Id = 5,
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 50, 564, DateTimeKind.Utc).AddTicks(1710),
-                            IsPublic = true,
-                            Topic = "Unbranded Soft Car Movies"
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 1, 845, DateTimeKind.Utc).AddTicks(1955),
+                            IsPublic = false,
+                            Topic = "Dancer"
                         },
                         new
                         {
                             Id = 6,
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 50, 564, DateTimeKind.Utc).AddTicks(1718),
-                            IsPublic = true,
-                            Topic = "Grocery"
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 1, 845, DateTimeKind.Utc).AddTicks(1959),
+                            IsPublic = false,
+                            Topic = "Videographer"
                         },
                         new
                         {
                             Id = 7,
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 50, 564, DateTimeKind.Utc).AddTicks(1744),
-                            IsPublic = true,
-                            Topic = "calculating"
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 1, 845, DateTimeKind.Utc).AddTicks(1962),
+                            IsPublic = false,
+                            Topic = "Photographer"
                         },
                         new
                         {
                             Id = 8,
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 50, 564, DateTimeKind.Utc).AddTicks(1787),
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 1, 845, DateTimeKind.Utc).AddTicks(1967),
                             IsPublic = false,
-                            Topic = "Squares multi-byte"
+                            Topic = "Painter"
                         },
                         new
                         {
                             Id = 9,
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 50, 564, DateTimeKind.Utc).AddTicks(1826),
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 1, 845, DateTimeKind.Utc).AddTicks(1969),
                             IsPublic = false,
-                            Topic = "Assistant Bedfordshire cyan"
+                            Topic = "Musician"
                         },
                         new
                         {
                             Id = 10,
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 50, 564, DateTimeKind.Utc).AddTicks(1879),
-                            IsPublic = true,
-                            Topic = "connect Ports transition"
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 1, 845, DateTimeKind.Utc).AddTicks(1972),
+                            IsPublic = false,
+                            Topic = "Writer"
                         });
                 });
 
@@ -133,6 +133,9 @@ namespace ChatTeamChallenge.Persistence.Migrations
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -152,72 +155,82 @@ namespace ChatTeamChallenge.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            ChatId = 8,
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 51, 769, DateTimeKind.Utc).AddTicks(3278),
-                            UserId = 4
+                            ChatId = 1,
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 2, 988, DateTimeKind.Utc).AddTicks(8343),
+                            Role = 1,
+                            UserId = 8
                         },
                         new
                         {
                             Id = 2,
-                            ChatId = 7,
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 51, 769, DateTimeKind.Utc).AddTicks(3323),
-                            UserId = 9
+                            ChatId = 1,
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 2, 988, DateTimeKind.Utc).AddTicks(8384),
+                            Role = 1,
+                            UserId = 8
                         },
                         new
                         {
                             Id = 3,
-                            ChatId = 4,
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 51, 769, DateTimeKind.Utc).AddTicks(3329),
-                            UserId = 10
+                            ChatId = 1,
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 2, 988, DateTimeKind.Utc).AddTicks(8391),
+                            Role = 1,
+                            UserId = 7
                         },
                         new
                         {
                             Id = 4,
-                            ChatId = 6,
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 51, 769, DateTimeKind.Utc).AddTicks(3363),
-                            UserId = 2
+                            ChatId = 1,
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 2, 988, DateTimeKind.Utc).AddTicks(8397),
+                            Role = 0,
+                            UserId = 10
                         },
                         new
                         {
                             Id = 5,
-                            ChatId = 8,
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 51, 769, DateTimeKind.Utc).AddTicks(3366),
-                            UserId = 4
+                            ChatId = 1,
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 2, 988, DateTimeKind.Utc).AddTicks(8403),
+                            Role = 1,
+                            UserId = 6
                         },
                         new
                         {
                             Id = 6,
-                            ChatId = 6,
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 51, 769, DateTimeKind.Utc).AddTicks(3370),
-                            UserId = 5
+                            ChatId = 1,
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 2, 988, DateTimeKind.Utc).AddTicks(8408),
+                            Role = 1,
+                            UserId = 9
                         },
                         new
                         {
                             Id = 7,
-                            ChatId = 6,
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 51, 769, DateTimeKind.Utc).AddTicks(3373),
-                            UserId = 2
+                            ChatId = 1,
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 2, 988, DateTimeKind.Utc).AddTicks(8412),
+                            Role = 0,
+                            UserId = 9
                         },
                         new
                         {
                             Id = 8,
-                            ChatId = 6,
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 51, 769, DateTimeKind.Utc).AddTicks(3376),
-                            UserId = 2
+                            ChatId = 1,
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 2, 988, DateTimeKind.Utc).AddTicks(8418),
+                            Role = 1,
+                            UserId = 1
                         },
                         new
                         {
                             Id = 9,
-                            ChatId = 4,
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 51, 769, DateTimeKind.Utc).AddTicks(3379),
-                            UserId = 4
+                            ChatId = 1,
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 2, 988, DateTimeKind.Utc).AddTicks(8422),
+                            Role = 1,
+                            UserId = 6
                         },
                         new
                         {
                             Id = 10,
-                            ChatId = 5,
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 51, 769, DateTimeKind.Utc).AddTicks(3383),
-                            UserId = 4
+                            ChatId = 1,
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 2, 988, DateTimeKind.Utc).AddTicks(8426),
+                            Role = 1,
+                            UserId = 9
                         });
                 });
 
@@ -265,113 +278,143 @@ namespace ChatTeamChallenge.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            Body = "hard drive revolutionize circuit Beauty & Computers Cove Representative distributed modular Belarus Saint Pierre and Miquelon",
-                            ChatId = 2,
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 51, 771, DateTimeKind.Utc).AddTicks(4495),
+                            Body = "Principal Checking Account Borders holistic Pula Intelligent bypass heuristic deposit visualize",
+                            ChatId = 1,
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 2, 990, DateTimeKind.Utc).AddTicks(8495),
                             IsRead = false,
-                            ReceiverId = 9,
-                            SenderId = 1,
-                            SenderUserName = "Amelie.Lynch"
+                            ReceiverId = 5,
+                            SenderId = 2,
+                            SenderUserName = "Muriel85"
                         },
                         new
                         {
                             Id = 2,
-                            Body = "Inlet Baby intangible Movies Avon Mobility programming Awesome Cotton Chair invoice Borders",
+                            Body = "deposit Avon Frozen methodologies Arkansas Rustic Small Underpass Jewelery deposit",
                             ChatId = 1,
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 51, 771, DateTimeKind.Utc).AddTicks(4619),
-                            IsRead = false,
-                            ReceiverId = 3,
-                            SenderId = 8,
-                            SenderUserName = "Ike75"
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 2, 990, DateTimeKind.Utc).AddTicks(8623),
+                            IsRead = true,
+                            ReceiverId = 7,
+                            SenderId = 7,
+                            SenderUserName = "Ettie.Schaefer"
                         },
                         new
                         {
                             Id = 3,
-                            Body = "Books generate Village Shore scale Intuitive matrix withdrawal blue Somalia",
-                            ChatId = 9,
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 51, 771, DateTimeKind.Utc).AddTicks(4690),
+                            Body = "payment Shoes & Music Ohio Communications Lead US Dollar Buckinghamshire Regional Streamlined Fantastic Metal Chair",
+                            ChatId = 1,
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 2, 990, DateTimeKind.Utc).AddTicks(8749),
                             IsRead = false,
-                            ReceiverId = 5,
-                            SenderId = 2,
-                            SenderUserName = "Jermaine89"
+                            ReceiverId = 10,
+                            SenderId = 7,
+                            SenderUserName = "Dulce.Macejkovic64"
                         },
                         new
                         {
                             Id = 4,
-                            Body = "Movies Associate USB demand-driven Checking Account Station program Unbranded Fresh Shoes real-time Money Market Account",
-                            ChatId = 5,
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 51, 771, DateTimeKind.Utc).AddTicks(4746),
-                            IsRead = false,
-                            ReceiverId = 2,
-                            SenderId = 8,
-                            SenderUserName = "Ike75"
+                            Body = "Optimized Bedfordshire Plastic calculate haptic haptic 3rd generation Islands Cambridgeshire Investment Account",
+                            ChatId = 1,
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 2, 990, DateTimeKind.Utc).AddTicks(8788),
+                            IsRead = true,
+                            ReceiverId = 9,
+                            SenderId = 7,
+                            SenderUserName = "Alexanne_Lowe"
                         },
                         new
                         {
                             Id = 5,
-                            Body = "deposit withdrawal Refined Cotton Car Montana Triple-buffered Savings Account solid state extend Bedfordshire Proactive",
-                            ChatId = 7,
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 51, 771, DateTimeKind.Utc).AddTicks(4797),
+                            Body = "Personal Loan Account International transmitting Direct Checking Account encoding Plastic generating users radical",
+                            ChatId = 1,
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 2, 990, DateTimeKind.Utc).AddTicks(8829),
                             IsRead = true,
-                            ReceiverId = 10,
-                            SenderId = 1,
-                            SenderUserName = "Hiram.Grant90"
+                            ReceiverId = 2,
+                            SenderId = 9,
+                            SenderUserName = "Vern_Dooley"
                         },
                         new
                         {
                             Id = 6,
-                            Body = "South Dakota deploy Lead Practical Soft Keyboard internet solution driver Rustic impactful lavender schemas",
-                            ChatId = 10,
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 51, 771, DateTimeKind.Utc).AddTicks(4878),
-                            IsRead = false,
-                            ReceiverId = 9,
-                            SenderId = 6,
-                            SenderUserName = "Dedrick93"
+                            Body = "SMTP navigating open-source Small Rubber Chips Producer Director application Licensed Soft Soap Developer experiences",
+                            ChatId = 1,
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 2, 990, DateTimeKind.Utc).AddTicks(8893),
+                            IsRead = true,
+                            ReceiverId = 3,
+                            SenderId = 1,
+                            SenderUserName = "Keely41"
                         },
                         new
                         {
                             Id = 7,
-                            Body = "digital Mountains Wooden portals 24/365 Engineer Unbranded Rubber Sausages Public-key Rustic Plastic",
-                            ChatId = 4,
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 51, 771, DateTimeKind.Utc).AddTicks(4920),
-                            IsRead = false,
-                            ReceiverId = 7,
-                            SenderId = 8,
-                            SenderUserName = "Jermaine89"
+                            Body = "Practical Fresh Sausages Personal Loan Account navigate Indiana AI Robust Auto Loan Account Gorgeous monitoring Directives",
+                            ChatId = 1,
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 2, 990, DateTimeKind.Utc).AddTicks(8964),
+                            IsRead = true,
+                            ReceiverId = 2,
+                            SenderId = 3,
+                            SenderUserName = "Ettie.Schaefer"
                         },
                         new
                         {
                             Id = 8,
-                            Body = "collaboration Configuration Wooden Intelligent Rubber Tuna back-end Product invoice AGP monitor Brand",
-                            ChatId = 2,
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 51, 771, DateTimeKind.Utc).AddTicks(4956),
-                            IsRead = true,
-                            ReceiverId = 5,
-                            SenderId = 3,
-                            SenderUserName = "Dedrick93"
+                            Body = "olive Leone Fresh multi-byte Indiana Associate lavender Brooks eco-centric Practical Plastic Shoes",
+                            ChatId = 1,
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 2, 990, DateTimeKind.Utc).AddTicks(9033),
+                            IsRead = false,
+                            ReceiverId = 10,
+                            SenderId = 8,
+                            SenderUserName = "Wilhelm.Altenwerth92"
                         },
                         new
                         {
                             Id = 9,
-                            Body = "Incredible Granite Chips impactful Manat Optimized back-end yellow JBOD dynamic array Berkshire",
-                            ChatId = 2,
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 51, 771, DateTimeKind.Utc).AddTicks(5034),
+                            Body = "help-desk circuit Practical Hills Lithuania South Carolina pink Washington strategize olive",
+                            ChatId = 1,
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 2, 990, DateTimeKind.Utc).AddTicks(9075),
                             IsRead = true,
-                            ReceiverId = 5,
-                            SenderId = 3,
-                            SenderUserName = "Bessie.Little"
+                            ReceiverId = 8,
+                            SenderId = 6,
+                            SenderUserName = "Dulce.Macejkovic64"
                         },
                         new
                         {
                             Id = 10,
-                            Body = "Small Granite Car cross-platform RSS Nevada withdrawal Indiana Shores New Zealand Dollar markets PNG",
-                            ChatId = 3,
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 51, 771, DateTimeKind.Utc).AddTicks(5113),
-                            IsRead = true,
-                            ReceiverId = 2,
-                            SenderId = 5,
-                            SenderUserName = "Mckenna60"
+                            Body = "Data transmitting Ville efficient Avon methodical Bedfordshire lime Gold Awesome",
+                            ChatId = 1,
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 2, 990, DateTimeKind.Utc).AddTicks(9125),
+                            IsRead = false,
+                            ReceiverId = 4,
+                            SenderId = 8,
+                            SenderUserName = "Ettie.Schaefer"
                         });
+                });
+
+            modelBuilder.Entity("ChatTeamChallenge.Domain.Apartments.MessageFile", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ContentType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("Data")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<int>("MessageId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MessageId");
+
+                    b.ToTable("MessageFiles", (string)null);
                 });
 
             modelBuilder.Entity("ChatTeamChallenge.Domain.Apartments.RefreshToken", b =>
@@ -464,162 +507,162 @@ namespace ChatTeamChallenge.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            City = "Collinsville",
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 50, 678, DateTimeKind.Utc).AddTicks(352),
-                            Description = "functionalities real-time Street Toys & Shoes generate User-centric Connecticut Licensed Concrete Bike West Virginia Producer",
-                            DiscordLink = "nicolette.net",
-                            Email = "Elisha.Mertz@yahoo.com",
-                            InstagramLink = "nicolette.net",
-                            IsRemote = true,
-                            Password = "$2a$11$ZwqDnxrFXRKJABaXmtU4d.dmKB0F1cjZvzTZ/DTFdz79BySdZrrNy",
-                            Roles = 1,
-                            SpotifyLink = "nicolette.net",
-                            TelegramLink = "nicolette.net",
-                            Username = "Hiram.Grant90"
+                            City = "New Waldofort",
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 1, 960, DateTimeKind.Utc).AddTicks(4922),
+                            Description = "solid state hacking alliance THX Clothing, Movies & Tools override Money Market Account Wisconsin Virgin Islands, U.S. Borders",
+                            DiscordLink = "america.biz",
+                            Email = "Larue_Gottlieb72@gmail.com",
+                            InstagramLink = "america.biz",
+                            IsRemote = false,
+                            Password = "$2a$11$lcNSBUt8ZZmiP/Jt2hkSUu2yJw5UPov9E4ZKHlbt5NEVh2UvuDyGS",
+                            Roles = 128,
+                            SpotifyLink = "america.biz",
+                            TelegramLink = "america.biz",
+                            Username = "Ettie.Schaefer"
                         },
                         new
                         {
                             Id = 2,
-                            City = "D'angeloview",
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 50, 791, DateTimeKind.Utc).AddTicks(4904),
-                            Description = "Automotive & Movies leading-edge schemas index Vermont virtual Park content-based Gorgeous Concrete Bike e-business",
-                            DiscordLink = "tyshawn.biz",
-                            Email = "Jamar_Ward@yahoo.com",
-                            InstagramLink = "tyshawn.biz",
+                            City = "Taureanton",
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 2, 75, DateTimeKind.Utc).AddTicks(6051),
+                            Description = "Ridge bandwidth Key Secured circuit Incredible Incredible Rubber Computer networks Greens Michigan",
+                            DiscordLink = "marjory.info",
+                            Email = "Leonard.Lang47@gmail.com",
+                            InstagramLink = "marjory.info",
                             IsRemote = true,
-                            Password = "$2a$11$NUjwOIllNkbiZgKj67A5/uPNxxYrjBNgzihi240fj6PXqkY2c7NjG",
-                            Roles = 1,
-                            SpotifyLink = "tyshawn.biz",
-                            TelegramLink = "tyshawn.biz",
-                            Username = "Jermaine89"
+                            Password = "$2a$11$b.nepnCW8B6v/QjS/vBhZOJB9Qi6ym.DWQq5XKqAyVB7SlVRsfSV2",
+                            Roles = 0,
+                            SpotifyLink = "marjory.info",
+                            TelegramLink = "marjory.info",
+                            Username = "Alexanne_Lowe"
                         },
                         new
                         {
                             Id = 3,
-                            City = "North Ezequiel",
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 50, 903, DateTimeKind.Utc).AddTicks(9535),
-                            Description = "Bedfordshire Antigua and Barbuda deposit Directives Plastic Knolls Internal Incredible Plastic Soap Pines SDD",
-                            DiscordLink = "berenice.org",
-                            Email = "Robert.Wehner21@gmail.com",
-                            InstagramLink = "berenice.org",
-                            IsRemote = false,
-                            Password = "$2a$11$/2thddPDfjYj437/nmTcwuisoN6P.VT/YShilSUKj6ZtqRCNZaauG",
-                            Roles = 512,
-                            SpotifyLink = "berenice.org",
-                            TelegramLink = "berenice.org",
-                            Username = "Dedrick93"
+                            City = "New Forest",
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 2, 191, DateTimeKind.Utc).AddTicks(37),
+                            Description = "Small Steel Shirt Movies & Clothing Fantastic Plastic Hat Accounts Rubber RSS attitude iterate 1080p Saint Kitts and Nevis",
+                            DiscordLink = "katheryn.name",
+                            Email = "Keenan.Batz@gmail.com",
+                            InstagramLink = "katheryn.name",
+                            IsRemote = true,
+                            Password = "$2a$11$CHRIxSMz6VjGskVAZE/rZ.ULDxoOqhv3d34dF/kLrZYO2MxtqH9GG",
+                            Roles = 128,
+                            SpotifyLink = "katheryn.name",
+                            TelegramLink = "katheryn.name",
+                            Username = "Jaylan.Hackett35"
                         },
                         new
                         {
                             Id = 4,
-                            City = "Lake Lizeth",
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 51, 23, DateTimeKind.Utc).AddTicks(5466),
-                            Description = "Handmade Plastic Pants Granite Implementation payment navigate Bedfordshire Berkshire capacitor sticky Shoal",
-                            DiscordLink = "lisette.biz",
-                            Email = "Kathlyn68@yahoo.com",
-                            InstagramLink = "lisette.biz",
-                            IsRemote = true,
-                            Password = "$2a$11$ScSXhc7NGYN5cN1JfvvrcO3r1bCiLHOXAcDEHaLtlmoaRxShZnzmW",
+                            City = "South Havenshire",
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 2, 307, DateTimeKind.Utc).AddTicks(5338),
+                            Description = "Generic Beauty Berkshire matrix Vision-oriented overriding indexing Greenland Intelligent Mandatory",
+                            DiscordLink = "lynn.net",
+                            Email = "Hector.Quigley46@yahoo.com",
+                            InstagramLink = "lynn.net",
+                            IsRemote = false,
+                            Password = "$2a$11$OrQCVjJQ2cEC1WNued4Se.lZ8ksbt4qY9C419JPe1nDVLm0FJ3BBW",
                             Roles = 128,
-                            SpotifyLink = "lisette.biz",
-                            TelegramLink = "lisette.biz",
-                            Username = "Amelie.Lynch"
+                            SpotifyLink = "lynn.net",
+                            TelegramLink = "lynn.net",
+                            Username = "Odessa.Hodkiewicz76"
                         },
                         new
                         {
                             Id = 5,
-                            City = "New Scarlett",
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 51, 140, DateTimeKind.Utc).AddTicks(3369),
-                            Description = "schemas United Kingdom Cook Islands multi-byte Village Garden Crescent application Licensed Concrete Computer parsing",
-                            DiscordLink = "hailey.com",
-                            Email = "Zoey.Casper@hotmail.com",
-                            InstagramLink = "hailey.com",
-                            IsRemote = true,
-                            Password = "$2a$11$lG750/eYkVUbUXSpFGBeF.pey.kx2rZwriRojWyzeTkS8QO51jIgK",
-                            Roles = 16,
-                            SpotifyLink = "hailey.com",
-                            TelegramLink = "hailey.com",
-                            Username = "Ike75"
+                            City = "Christiansenfurt",
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 2, 421, DateTimeKind.Utc).AddTicks(150),
+                            Description = "Reunion Investment Account Platinum white withdrawal withdrawal Markets azure Handmade Concrete Chips extensible",
+                            DiscordLink = "daphne.com",
+                            Email = "Lorena53@hotmail.com",
+                            InstagramLink = "daphne.com",
+                            IsRemote = false,
+                            Password = "$2a$11$FeLQq1nB9CNoZINu6wby5ep6xUvjzb64AfHEaAxmpweyRRIUcWu9C",
+                            Roles = 4,
+                            SpotifyLink = "daphne.com",
+                            TelegramLink = "daphne.com",
+                            Username = "Dulce.Macejkovic64"
                         },
                         new
                         {
                             Id = 6,
-                            City = "West Kenyon",
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 51, 256, DateTimeKind.Utc).AddTicks(8340),
-                            Description = "interface Fords deploy withdrawal contextually-based Implementation firmware indigo dedicated Morocco",
-                            DiscordLink = "jedidiah.org",
-                            Email = "Anderson_Balistreri@hotmail.com",
-                            InstagramLink = "jedidiah.org",
-                            IsRemote = true,
-                            Password = "$2a$11$iUTIZRJcGGS0WHLlGsZ8tem8VJn7ieY32/hSjJY5THFtGMW8UFx7y",
-                            Roles = 8,
-                            SpotifyLink = "jedidiah.org",
-                            TelegramLink = "jedidiah.org",
-                            Username = "Kole99"
+                            City = "West Joyce",
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 2, 533, DateTimeKind.Utc).AddTicks(9999),
+                            Description = "users 24/365 Handcrafted Steel Shirt International Investment Account Checking Account backing up Strategist Awesome override",
+                            DiscordLink = "jonathon.name",
+                            Email = "Esteban32@gmail.com",
+                            InstagramLink = "jonathon.name",
+                            IsRemote = false,
+                            Password = "$2a$11$Lw236jYGv9VDPg/4jBx/neisODuBJ/l9BWs2wt4.sX8GZIbYYBqCy",
+                            Roles = 1,
+                            SpotifyLink = "jonathon.name",
+                            TelegramLink = "jonathon.name",
+                            Username = "Keely41"
                         },
                         new
                         {
                             Id = 7,
-                            City = "MacGyverburgh",
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 51, 381, DateTimeKind.Utc).AddTicks(9653),
-                            Description = "Data Tasty Granite Chair UAE Dirham cyan capacitor Concrete teal SQL plum Program",
-                            DiscordLink = "kamron.net",
-                            Email = "Leonel.Heathcote@gmail.com",
-                            InstagramLink = "kamron.net",
-                            IsRemote = true,
-                            Password = "$2a$11$sTRfHqE7Ru0JvwXac8gzveuCrROLUgLVETyZ7jigCs4k.i89GoqS.",
-                            Roles = 8,
-                            SpotifyLink = "kamron.net",
-                            TelegramLink = "kamron.net",
-                            Username = "Bessie.Little"
+                            City = "West Magnus",
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 2, 647, DateTimeKind.Utc).AddTicks(620),
+                            Description = "invoice protocol invoice bi-directional connect Plains transform Mill Tasty integrated",
+                            DiscordLink = "arvel.biz",
+                            Email = "Jillian.Reynolds@yahoo.com",
+                            InstagramLink = "arvel.biz",
+                            IsRemote = false,
+                            Password = "$2a$11$zYqBdic7z5FTZ3OHoT7OGurCB8V23RM9.iKDR0WYR9KZajxbdxkiy",
+                            Roles = 1,
+                            SpotifyLink = "arvel.biz",
+                            TelegramLink = "arvel.biz",
+                            Username = "Vern_Dooley"
                         },
                         new
                         {
                             Id = 8,
-                            City = "New Mariellemouth",
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 51, 509, DateTimeKind.Utc).AddTicks(7687),
-                            Description = "repurpose Awesome South Dakota payment Product gold Communications Tanzania Credit Card Account integrated",
-                            DiscordLink = "adelle.com",
-                            Email = "Blanche_Abernathy43@gmail.com",
-                            InstagramLink = "adelle.com",
+                            City = "South Bill",
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 2, 759, DateTimeKind.Utc).AddTicks(3705),
+                            Description = "Cordoba Oro Valleys Roads transition hacking quantifying Analyst Avon SAS Garden, Grocery & Electronics",
+                            DiscordLink = "baby.com",
+                            Email = "Estell_Berge@yahoo.com",
+                            InstagramLink = "baby.com",
                             IsRemote = false,
-                            Password = "$2a$11$sWm9YihJxlqMqMQIbR7UrOK.aN2i.DfLy0rrH5.xPaztpt/fQme8.",
-                            Roles = 128,
-                            SpotifyLink = "adelle.com",
-                            TelegramLink = "adelle.com",
-                            Username = "Trey_Welch"
+                            Password = "$2a$11$ojovfo6I4rsjH619uzYKvOyw7looonH3.nTWumW2WpzyBPYM1IXNm",
+                            Roles = 2,
+                            SpotifyLink = "baby.com",
+                            TelegramLink = "baby.com",
+                            Username = "Wilhelm.Altenwerth92"
                         },
                         new
                         {
                             Id = 9,
-                            City = "Efrenbury",
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 51, 648, DateTimeKind.Utc).AddTicks(6174),
-                            Description = "Handmade Sleek Frozen Bacon Taka Berkshire compress bandwidth Unbranded Borders reboot benchmark",
-                            DiscordLink = "lawrence.com",
-                            Email = "Billie.Gerlach20@yahoo.com",
-                            InstagramLink = "lawrence.com",
-                            IsRemote = false,
-                            Password = "$2a$11$b/mv.cWQujrL48QxfKkCnugdzP1LhO66oniPXSu.mTrCvkZlt9Cwe",
-                            Roles = 512,
-                            SpotifyLink = "lawrence.com",
-                            TelegramLink = "lawrence.com",
-                            Username = "Mckenna60"
+                            City = "Lake Calebview",
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 2, 872, DateTimeKind.Utc).AddTicks(2333),
+                            Description = "task-force lime Generic Cameroon Tasty Soft Shirt parsing circuit Bedfordshire bus teal",
+                            DiscordLink = "arnold.biz",
+                            Email = "Nelda.Konopelski@gmail.com",
+                            InstagramLink = "arnold.biz",
+                            IsRemote = true,
+                            Password = "$2a$11$p10VjrH1./TBVhUWMR3ele6xLU3/8jwnVF98qFZKjVkQsPlQfqlo.",
+                            Roles = 256,
+                            SpotifyLink = "arnold.biz",
+                            TelegramLink = "arnold.biz",
+                            Username = "Muriel85"
                         },
                         new
                         {
                             Id = 10,
-                            City = "Lourdesfort",
-                            CreatedAt = new DateTime(2023, 11, 26, 21, 32, 51, 766, DateTimeKind.Utc).AddTicks(2312),
-                            Description = "deposit reboot Health envisioneer Investor Customer Executive zero defect Books B2C",
-                            DiscordLink = "patrick.name",
-                            Email = "Oma.Schneider72@hotmail.com",
-                            InstagramLink = "patrick.name",
+                            City = "Carolville",
+                            CreatedAt = new DateTime(2024, 1, 3, 9, 22, 2, 986, DateTimeKind.Utc).AddTicks(160),
+                            Description = "secondary ADP Wells Aruban Guilder Rest cohesive XML asymmetric Gorgeous Cotton Fish navigate",
+                            DiscordLink = "vernice.info",
+                            Email = "Elinore.Kling@gmail.com",
+                            InstagramLink = "vernice.info",
                             IsRemote = false,
-                            Password = "$2a$11$E.Xfs1GdIB6rIQm5z2Eh4eElqcYKFBQDOoX6XHcxXzKxoapN2ArEO",
-                            Roles = 4,
-                            SpotifyLink = "patrick.name",
-                            TelegramLink = "patrick.name",
-                            Username = "Harrison.Kozey20"
+                            Password = "$2a$11$4/6ARN5d1Zs/uQNJ.hFkeu1RrlhFBt7.CgCe2gi7A1NFvsGNAuvH2",
+                            Roles = 32,
+                            SpotifyLink = "vernice.info",
+                            TelegramLink = "vernice.info",
+                            Username = "Aletha52"
                         });
                 });
 
@@ -653,6 +696,17 @@ namespace ChatTeamChallenge.Persistence.Migrations
                     b.Navigation("Chat");
                 });
 
+            modelBuilder.Entity("ChatTeamChallenge.Domain.Apartments.MessageFile", b =>
+                {
+                    b.HasOne("ChatTeamChallenge.Domain.Apartments.Message", "Message")
+                        .WithMany("Files")
+                        .HasForeignKey("MessageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Message");
+                });
+
             modelBuilder.Entity("ChatTeamChallenge.Domain.Apartments.RefreshToken", b =>
                 {
                     b.HasOne("ChatTeamChallenge.Domain.Apartments.User", "User")
@@ -669,6 +723,11 @@ namespace ChatTeamChallenge.Persistence.Migrations
                     b.Navigation("Members");
 
                     b.Navigation("Messages");
+                });
+
+            modelBuilder.Entity("ChatTeamChallenge.Domain.Apartments.Message", b =>
+                {
+                    b.Navigation("Files");
                 });
 
             modelBuilder.Entity("ChatTeamChallenge.Domain.Apartments.User", b =>

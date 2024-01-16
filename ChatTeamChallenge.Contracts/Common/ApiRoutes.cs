@@ -17,7 +17,9 @@ public static class ApiRoutes
 
         public const string Update = "upd";
         
-        public const string Get = "c/{id:int}";
+        public const string GetById = "c/{id:int}";
+        
+        public const string GetByTopic = "c/{topic}";
         
         public const string GetAll = "inbox";
         
@@ -33,6 +35,8 @@ public static class ApiRoutes
         public const string GetAll = "all";
         
         public const string Remove = "remove";
+        
+        public const string RemoveRange = "remove-range";
     }
     
     public static class Message
@@ -59,14 +63,25 @@ public static class ApiRoutes
     {
         public const string Base = "api/user";
         
-        public const string GetById = "u/{id:int}";
+        public const string GetById = "details";
         
         public const string GetByEmail = "ue/{email}";
         
         public const string GetAll = "list";
         
-        public const string GetFromToken = "fromToken";
-        
         public const string ChangePassword = "chpass/{userId:int}";
+        
+        public const string ChangeRole = "chrole/{userId:int}/{role}";
+    }
+    
+    public static class FileManager
+    {
+        public const string Upload = "upload/{identifier:int}";
+        
+        public const string Download = "download/{id:int}";
+        
+        public const string All = "all";
+        
+        public const string Remove = "remove/{id:int}";
     }
 }

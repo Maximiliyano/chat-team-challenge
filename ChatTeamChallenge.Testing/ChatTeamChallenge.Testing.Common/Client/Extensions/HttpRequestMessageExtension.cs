@@ -1,6 +1,5 @@
 ﻿using System.Text;
 using ChatTeamChallenge.Testing.Common.Client.Constants;
-using Microsoft.AspNetCore.WebUtilities;
 using Newtonsoft.Json;
 
 namespace ChatTeamChallenge.Testing.Common.Client.Extensions;

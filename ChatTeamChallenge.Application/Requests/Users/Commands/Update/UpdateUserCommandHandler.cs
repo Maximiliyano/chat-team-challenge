@@ -25,7 +25,7 @@ public sealed class UpdateUserCommandHandler : ICommandHandler<UpdateUserCommand
     
     public async Task<Result<int>> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
     {
-        var user = _mapper.Map<User>(request);
+        var user = _mapper.Map<User>(request); // TODO create user
         
         await _userRepository.UpdateAsync(user);
         await _unitOfWork.SaveChangesAsync(cancellationToken);

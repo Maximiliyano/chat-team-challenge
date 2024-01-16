@@ -1,4 +1,5 @@
 ﻿using ChatTeamChallenge.Testing.Common.Client.Extensions;
+using ChatTeamChallenge.Testing.Common.Client.Session;
 using ChatTeamChallenge.Testing.Common.Helpers;
 
 namespace ChatTeamChallenge.Testing.Common.Client;
@@ -6,6 +7,7 @@ namespace ChatTeamChallenge.Testing.Common.Client;
 public abstract class ClientApi
 {
     private readonly HttpClient _client;
+    private readonly SessionStorage _sessionStorage;
     
     private readonly string _serviceUrl;
 
@@ -17,6 +19,12 @@ public abstract class ClientApi
             BaseAddress = new Uri(ConfigurationHelper.AppUrl)
         };
     }
+    
+    protected ClientApi(string serviceUrl, SessionStorage sessionStorage)
+        : this(serviceUrl)
+    {
+        _sessionStorage = sessionStorage;
+    }
 
     #region Requests
     
@@ -24,6 +32,12 @@ public abstract class ClientApi
         where TPayload : class
     {
         return CreateRequestWithServiceUrl(HttpMethod.Post, url, payload);
+    }
+    
+    protected HttpRequestMessage CreatePostRequest<TPayload>(TPayload payload = null!)
+        where TPayload : class
+    {
+        return CreateRequestWithServiceUrl(HttpMethod.Post, string.Empty, payload);
     }
 
     protected HttpRequestMessage CreateDeleteRequest(string url)

@@ -3,7 +3,7 @@ using ChatTeamChallenge.Application.Infrastructure;
 using ChatTeamChallenge.Contracts.Authentication;
 using ChatTeamChallenge.Contracts.Common;
 using ChatTeamChallenge.Domain.Interfaces;
-using ChatTeamChallenge.Services.Api.Extensions;
+using ChatTeamChallenge.Services.Api.Utilities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

@@ -30,7 +30,8 @@ public sealed class ChatRepository : RepositoryBase<Chat>, IChatRepository
     public new async Task<Chat?> ReadByIdAsync(int id)
     {
         return await DbContext.Set<Chat>()
-            .Include(c => c.Members)
+            .Include(c => c.Members!)
+            .ThenInclude(c => c.User)
             .AsNoTracking()
             .FirstOrDefaultAsync(c => c.Id == id);
     }
@@ -54,11 +55,6 @@ public sealed class ChatRepository : RepositoryBase<Chat>, IChatRepository
 
     public async Task<bool> IsTopicUniqueAsync(string topic) =>
         !await AnyAsync(new ChatWithTopicSpecification(topic));
-
-    public Task<PagedList<ChatModel>> ReadByAllAsync(int page, int pageSize, DateTime? date, bool? isPrivate)
-    {
-        throw new NotImplementedException();
-    }
 
     public async Task<PagedList<ChatModel>> ReadByAllAsync(int page, int pageSize, DateTime? date, bool? isPublic, int? userId)
     {

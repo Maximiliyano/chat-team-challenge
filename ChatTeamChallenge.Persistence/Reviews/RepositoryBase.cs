@@ -17,11 +17,12 @@ public abstract class RepositoryBase<TEntity>
     
     public async Task InsertAsync(TEntity obj) =>
         await DbContext.InsertAsync(obj);
-    
+
+    public async Task InsertRangeAsync(IEnumerable<TEntity> objs) =>
+        await DbContext.InsertRangeAsync(objs);
+
     public async Task RemoveAsync(TEntity obj) =>
-        await DbContext.Set<TEntity>()
-            .Where(e => e == obj)
-            .ExecuteDeleteAsync();
+        await DbContext.RemoveAsync(obj);
     
     protected async Task<bool> AnyAsync(Specification<TEntity> specification) =>
         await DbContext.Set<TEntity>().AnyAsync(specification);

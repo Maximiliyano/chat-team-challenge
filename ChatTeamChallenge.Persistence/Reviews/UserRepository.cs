@@ -12,9 +12,19 @@ public sealed class UserRepository : RepositoryBase<User>, IUserRepository
     {
     }
 
+    public async Task<bool> IsUsernameUniqueAsync(string username)
+    {
+        return !await DbContext.Set<User>().AnyAsync(u => u.Username == username);
+    }
+
     public async Task<bool> IsEmailUniqueAsync(string email)
     {
-        return await DbContext.Set<User>().AnyAsync(u => u.Email == email);
+        return !await DbContext.Set<User>().AnyAsync(u => u.Email == email);
+    }
+
+    public async Task<bool> IsUserExistAsync(int userId)
+    {
+        return await DbContext.Set<User>().AnyAsync(u => u.Id == userId);
     }
 
     public async Task<PagedList<User>> ReadAllAsync(int page, int pageSize)
@@ -44,5 +54,10 @@ public sealed class UserRepository : RepositoryBase<User>, IUserRepository
     public async Task<User?> ReadByEmailAsync(string email) =>
         await DbContext.Set<User>()
             .AsNoTracking()
-            .FirstOrDefaultAsync(x => x.Email == email);
+            .FirstOrDefaultAsync(u => u.Email == email);
+
+    public async Task<User?> ReadByNameAsync(string username) =>
+        await DbContext.Set<User>()
+            .AsNoTracking()
+            .FirstOrDefaultAsync(u => u.Username == username);
 }
